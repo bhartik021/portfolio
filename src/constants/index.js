@@ -33,9 +33,9 @@ import {
     sliders04,
     telegram,
     twitter,
-    yourlogo, 
+    yourlogo,
   } from "../assets";
-  
+
   export const navigation = [
     {
       id: "0",
@@ -67,20 +67,6 @@ import {
   ];
   
   export const companyLogos = [yourlogo, yourlogo, yourlogo, yourlogo, yourlogo];
-  
-  export const brainwaveServices = [
-    "Photo generating",
-    "Photo enhance",
-    "Seamless Integration",
-  ];
-  
-  export const brainwaveServicesIcons = [
-    recording03,
-    recording01,
-    disc02,
-    chromecast,
-    sliders04,
-  ];
   
   export const experience = [
     {
@@ -232,19 +218,19 @@ import {
     },
   ];
   
-  export const benefits = [
+  export const services = [
     {
       id: "0",
-      title: "Ask anything",
-      text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
+      title: "Technical Writing",
+      text: "Clear, concise content tailored to your audience's needs. Enhance communication with expert documentation.",
       backgroundUrl: "./src/assets/benefits/card-1.svg",
       iconUrl: benefitIcon1,
       imageUrl: benefitImage2,
     },
     {
       id: "1",
-      title: "Improve everyday",
-      text: "The app uses natural language processing to understand user queries and provide accurate and relevant responses.",
+      title: "Web Development",
+      text: "Customized websites built with precision, functionality, and user experience in mind. Elevate your online presence.",
       backgroundUrl: "./src/assets/benefits/card-2.svg",
       iconUrl: benefitIcon2,
       imageUrl: benefitImage2,
@@ -252,35 +238,10 @@ import {
     },
     {
       id: "2",
-      title: "Connect everywhere",
-      text: "Connect with the AI chatbot from anywhere, on any device, making it more accessible and convenient.",
+      title: "Community Building",
+      text: "Foster connections and engagement through strategic initiatives and inclusive platforms. Cultivate thriving online communities.",
       backgroundUrl: "./src/assets/benefits/card-3.svg",
       iconUrl: benefitIcon3,
-      imageUrl: benefitImage2,
-    },
-    {
-      id: "3",
-      title: "Fast responding",
-      text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
-      backgroundUrl: "./src/assets/benefits/card-4.svg",
-      iconUrl: benefitIcon4,
-      imageUrl: benefitImage2,
-      light: true,
-    },
-    {
-      id: "4",
-      title: "Ask anything",
-      text: "Lets users quickly find answers to their questions without having to search through multiple sources.",
-      backgroundUrl: "./src/assets/benefits/card-5.svg",
-      iconUrl: benefitIcon1,
-      imageUrl: benefitImage2,
-    },
-    {
-      id: "5",
-      title: "Improve everyday",
-      text: "The app uses natural language processing to understand user queries and provide accurate and relevant responses.",
-      backgroundUrl: "./src/assets/benefits/card-6.svg",
-      iconUrl: benefitIcon2,
       imageUrl: benefitImage2,
     },
   ];
@@ -296,13 +257,13 @@ import {
       id: "1",
       title: "Twitter",
       iconUrl: twitter,
-      url: "#",
+      url: "https://twitter.com/bhartik021",
     },
     {
       id: "2",
       title: "Instagram",
       iconUrl: instagram,
-      url: "#",
+      url: "https://www.instagram.com/bhartik021/",
     },
     {
       id: "3",
