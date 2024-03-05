@@ -33,7 +33,7 @@ import {
     sliders04,
     telegram,
     twitter,
-    yourlogo,
+    yourlogo, 
   } from "../assets";
   
   export const navigation = [
@@ -49,22 +49,17 @@ import {
     },
     {
       id: "2",
-      title: "Skills",
-      url: "#skills",
-    },
-    {
-      id: "3",
       title: "Experience",
       url: "#experience",
     },
     {
-      id: "4",
+      id: "3",
       title: "Blogs",
       url: "#blogs",
       onlyMobile: true,
     },
     {
-      id: "5",
+      id: "4",
       title: "Resume",
       url: "#resume",
       onlyMobile: true,

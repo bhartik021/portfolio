@@ -1,5 +1,6 @@
 import { curve } from "../assets";
 import Button from "./Button";
+import CompanyLogos from "./CompanyLogos";
 import Section from "./Section";
 import { BackgroundCircles, BottomLine } from "./design/Hero";
 import { useRef } from "react";
@@ -44,6 +45,8 @@ const Hero = () => {
             <BackgroundCircles />
             
         </div>
+
+        <CompanyLogos className="hidden relative z-10 mt-20 lg:block" />
     </div>
 
     <BottomLine/>
