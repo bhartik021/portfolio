@@ -59,7 +59,7 @@ const Projects = () => (
                   </div>
                   <h4 className="h4 mb-4">{item.title}</h4>
                   <p className="body-2 mb-[1.5rem] text-n-4">{item.text}</p>
-                  <a href={item.url} className="ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider">
+                  <a href={item.url} target="_blank" className="ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider">
                     Visit Project
                   </a>
                 </div>
