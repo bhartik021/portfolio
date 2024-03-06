@@ -1,4 +1,4 @@
-import brainwave from "./brainwave.svg";
+import bharti from "./bharti.svg";
 import check from "./check.svg";
 import brainwaveSymbol from "./brainwave-symbol.svg";
 import brainwaveWhiteSymbol from "./brainwave-symbol-white.svg";
@@ -8,7 +8,6 @@ import smallSphere from "./4-small.png";
 import grid from "./grid.png";
 import check2 from "./check-02.svg";
 import loading1 from "./loading-01.svg";
-import yourlogo from "./yourlogo.svg";
 import homeSmile from "./home-smile.svg";
 import file02 from "./file-02.svg";
 import searchMd from "./search-md.svg";
@@ -75,8 +74,14 @@ import instagram from "./socials/instagram.svg";
 import telegram from "./socials/telegram.svg";
 import twitter from "./socials/twitter.svg";
 
+import geeksforgeeks from "./geeksforgeeks.svg";
+import scaler from "./scaler.svg";
+import tutorialspoint from "./tutorialspoint.svg";
+import peppercontent from "./peppercontent.svg";
+import proelevate from "./proelevate.svg";
+
 export {
-  brainwave,
+  bharti,
   check,
   check2,
   loading1,
@@ -86,7 +91,6 @@ export {
   gradient,
   smallSphere,
   grid,
-  yourlogo,
   homeSmile,
   file02,
   searchMd,
@@ -144,4 +148,9 @@ export {
   instagram,
   telegram,
   twitter,
+  geeksforgeeks,
+  scaler,
+  tutorialspoint,
+  peppercontent,
+  proelevate,
 };

@@ -2,8 +2,8 @@ import {
     benefitIcon1,
     benefitIcon2,
     benefitIcon3,
-    benefitIcon4,
     benefitImage2,
+    bharti,
     chromecast,
     disc02,
     discord,
@@ -14,9 +14,6 @@ import {
     framer,
     homeSmile,
     instagram,
-    notification2,
-    notification3,
-    notification4,
     notion,
     photoshop,
     plusSquare,
@@ -33,7 +30,11 @@ import {
     sliders04,
     telegram,
     twitter,
-    yourlogo,
+    geeksforgeeks,
+    scaler,
+    tutorialspoint,
+    peppercontent,
+    proelevate,
   } from "../assets";
 
   export const navigation = [
@@ -49,8 +50,8 @@ import {
     },
     {
       id: "2",
-      title: "Experience",
-      url: "#experience",
+      title: "Projects",
+      url: "#projects",
     },
     {
       id: "3",
@@ -66,9 +67,9 @@ import {
     },
   ];
   
-  export const companyLogos = [yourlogo, yourlogo, yourlogo, yourlogo, yourlogo];
+  export const companyLogos = [geeksforgeeks, scaler, tutorialspoint, peppercontent, proelevate];
   
-  export const experience = [
+  export const projects = [
     {
       id: "0",
       title: "Voice recognition",
