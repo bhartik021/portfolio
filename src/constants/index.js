@@ -35,6 +35,7 @@ import {
     tutorialspoint,
     peppercontent,
     proelevate,
+    bhartiIcon,
   } from "../assets";
 
   export const navigation = [
@@ -106,21 +107,13 @@ import {
   ];
   
   export const collabText =
-    "With smart automation and top-notch security, it's the perfect solution for teams looking to work smarter.";
+    "My job is to develop your website or create technical content so that it is functional and user-friendly. I created Technical Content for many famous brand companies.";
   
   export const collabContent = [
     {
       id: "0",
-      title: "Seamless Integration",
-      text: collabText,
-    },
-    {
-      id: "1",
-      title: "Smart Automation",
-    },
-    {
-      id: "2",
-      title: "Top-notch Security",
+      title: "Learn About Me",
+      text: "I'm Software Developer and Technical Writer from Kota, Rajasthan, India, working at Scaler as Technical Writer. I enjoy turning complex problems into simple, solutions.",
     },
   ];
   
