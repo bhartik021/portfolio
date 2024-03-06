@@ -35,10 +35,10 @@ const Hero = () => {
             text-n-2 lg:mb-8">
             Amazon ML Summer'23 | SIH'23 Finalist | Samsung SFT - Top 50 | Mentor at GSSoC'23 | Technical Writer
             </p>
-            <Button href="#" white>
-                Resume
+            <Button href="mailto:bhartik021@gmail.com" white>
+                Hire Me
             </Button>
-            <Button href="#" white className="ml-4">
+            <Button href="https://www.linkedin.com/in/bhartik021/" white className="ml-4">
                 Let's Connect
             </Button>
             
