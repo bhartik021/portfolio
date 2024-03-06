@@ -25,7 +25,7 @@ const About = () => {
             ))}
           </ul>
 
-          <Button href="mailto:bhartik021@gmail.com" >Hire Me</Button>
+          <Button target="_blank" href="mailto:bhartik021@gmail.com" >Hire Me</Button>
         </div>
 
         <div className="lg:ml-auto xl:w-[38rem] mt-4">
