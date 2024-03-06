@@ -35,10 +35,10 @@ const Hero = () => {
             text-n-2 lg:mb-8">
             Amazon ML Summer'23 | SIH'23 Finalist | Samsung SFT - Top 50 | Mentor at GSSoC'23 | Technical Writer
             </p>
-            <Button href="https://calendly.com/bhartik021" white>
+            <Button target="_blank" href="https://calendly.com/bhartik021" white>
                 Book a Meeting
             </Button>
-            <Button href="https://www.linkedin.com/in/bhartik021/" white className="ml-4">
+            <Button target="_blank" href="https://www.linkedin.com/in/bhartik021/" white className="ml-4">
                 Let's Connect
             </Button>
             
