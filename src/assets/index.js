@@ -53,10 +53,10 @@ import stars from "./pricing/stars.svg";
 import coins from "./roadmap/coins.png";
 import done from "./roadmap/done.svg";
 import hero from "./roadmap/hero.png";
-import roadmap1 from "./roadmap/image-1.png";
-import roadmap2 from "./roadmap/image-2.png";
-import roadmap3 from "./roadmap/image-3.png";
-import roadmap4 from "./roadmap/image-4.png";
+import project1 from "./roadmap/image-1.png";
+import project2 from "./roadmap/image-2.png";
+import project3 from "./roadmap/image-3.png";
+import project4 from "./roadmap/image-4.png";
 import undone from "./roadmap/undone.svg";
 
 import notification1 from "./notification/image-1.png";
@@ -139,10 +139,10 @@ export {
   coins,
   done,
   hero,
-  roadmap1,
-  roadmap2,
-  roadmap3,
-  roadmap4,
+  project1,
+  project2,
+  project3,
+  project4,
   undone,
   notification1,
   notification2,
