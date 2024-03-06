@@ -35,6 +35,13 @@ import photoshop from "./collaboration/photoshop.png";
 import protopie from "./collaboration/protopie.png";
 import raindrop from "./collaboration/raindrop.png";
 import slack from "./collaboration/slack.png";
+import htmlcsslogo from "./collaboration/htmlcsslogo.png";
+import javascriptlogo from "./collaboration/javascriptlogo.png";
+import reactlogo from "./collaboration/reactlogo.png";
+import nodelogo from "./collaboration/nodelogo.png";
+import mongodblogo from "./collaboration/mongodblogo.png";
+import azurelogo from "./collaboration/azurelogo.png";
+import cpplogo from "./collaboration/cpplogo.png"; 
 
 import service1 from "./services/service-1.png";
 import service2 from "./services/service-2.png";
@@ -117,6 +124,13 @@ export {
   protopie,
   raindrop,
   slack,
+  htmlcsslogo,
+  javascriptlogo,
+  reactlogo,
+  nodelogo,
+  mongodblogo,
+  azurelogo,
+  cpplogo,
   service1,
   service2,
   service3,
