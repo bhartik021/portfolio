@@ -72,7 +72,7 @@ const Projects = () => (
       </div>
 
       <div className="flex justify-center mt-12 md:mt-15 xl:mt-20">
-        <Button href="#hero">Top</Button>
+        <Button href="#hero">Back To Top</Button>
       </div>
     </div>
   </Section>
