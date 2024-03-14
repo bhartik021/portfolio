@@ -55,7 +55,7 @@ import done from "./roadmap/done.svg";
 import hero from "./roadmap/hero.png";
 import project1 from "./roadmap/image-1.png";
 import project2 from "./roadmap/image-2.png";
-import project3 from "./roadmap/image-3.png";
+import project3 from "./roadmap/image-3.svg";
 import project4 from "./roadmap/image-4.png";
 import undone from "./roadmap/undone.svg";
 

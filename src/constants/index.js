@@ -81,21 +81,21 @@ import {
     },
     {
       id: "2",
-      title: "SQL Generator",
-      text: "SQL Generator allows users to generate sql query, by giving prompt. It uses ChatGPT API to generate the SQL query.",
-      date: "February 2024",
-      status: "progress",
-      imageUrl: project2,
-      url: "https://github.com/bhartik021/sql-generator",
-    },
-    {
-      id: "3",
-      title: "pdfSum",
-      text: "pdfSum is an backend application, created using nodejs. It allows users to generate summary from pdf by using OCTOAI API.",
+      title: "Scrap Ninja",
+      text: "Developed using Next.js and Bright Data's web-unlocker, this e-commerce product scraping site is designed to assist users in making informed decisions. It notifies users when a product drops in price and helps competitors by alerting them when the product is out of stock, all managed through cron jobs.",
       date: "March 2024",
       status: "progress",
       imageUrl: project3,
-      url: "https://github.com/bhartik021/pdf-sum",
+      url: "https://github.com/bhartik021/scrap-ninja",
+    },
+    {
+      id: "3",
+      title: "SQL Generator",
+      text: "SQL Generator allows users to generate sql query, by giving prompt. It uses ChatGPT API to generate the SQL query.",
+      date: "April 2024",
+      status: "progress",
+      imageUrl: project2,
+      url: "https://github.com/bhartik021/sql-generator",
     },
   ];
   
