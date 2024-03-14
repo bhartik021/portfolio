@@ -26,6 +26,8 @@ import {
     tutorialspoint,
     peppercontent,
     proelevate,
+    bharti,
+    bhartiIcon,
   } from "../assets";
 
   export const navigation = [
@@ -81,21 +83,21 @@ import {
     },
     {
       id: "2",
+      title: "Linktree",
+      text: "A Linktree is a web page which consists stack of social media links and developed using Reactjs and Tailwind CSS with a Modern UI.",
+      date: "March 2024",
+      status: "done",
+      imageUrl: bhartiIcon,
+      url: "https://github.com/bhartik021/linktree",
+    },
+    {
+      id: "3",
       title: "Scrap Ninja",
       text: "Developed using Next.js and Bright Data's web-unlocker, this e-commerce product scraping site is designed to assist users in making informed decisions. It notifies users when a product drops in price and helps competitors by alerting them when the product is out of stock, all managed through cron jobs.",
       date: "March 2024",
       status: "progress",
       imageUrl: project3,
       url: "https://github.com/bhartik021/scrap-ninja",
-    },
-    {
-      id: "3",
-      title: "SQL Generator",
-      text: "SQL Generator allows users to generate sql query, by giving prompt. It uses ChatGPT API to generate the SQL query.",
-      date: "April 2024",
-      status: "progress",
-      imageUrl: project2,
-      url: "https://github.com/bhartik021/sql-generator",
     },
   ];
   

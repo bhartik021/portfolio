@@ -52,8 +52,8 @@ const Projects = () => (
                     <img
                       className="w-20%"
                       src={item.imageUrl}
-                      width={300}
-                      height={200}
+                      width={150}
+                      height={150}
                       alt={item.title}
                     />
                   </div>
