@@ -76,7 +76,7 @@ const Header = () => {
         </a>
         <Button 
           target="_blank" 
-          className="hidden lg:flex" href="https://drive.google.com/file/d/1L754JUGua5HyS8M81F4oBPtZJDB39cqY/view?usp=drive_link">
+          className="hidden lg:flex" href="https://drive.google.com/file/d/1J6DsNigPBCtfwr74mZEwfXmHPWxienmh/view?usp=sharing">
           Resume
         </Button>
 
