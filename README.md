@@ -60,13 +60,13 @@ Ensure you have the following software installed on your machine:
 Once the dependencies are installed, start the development server:
 
 ```bash
-npm start
+npm run dev
 ```
 
 Or, with yarn:
 
 ```bash
-yarn start
+yarn dev
 ```
 
 The development server should start running, and you should be able to access the portfolio website in your browser at http://localhost:3000.
