@@ -3,6 +3,10 @@
   "outputDirectory": "dist",
   "routes": [
     {
+      "src": "/bundle.js",
+      "dest": "/bundle.js"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
