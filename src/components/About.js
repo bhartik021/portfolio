@@ -1,5 +1,4 @@
 import React from 'react';
-import bhartiImage from '../assets/bharti.jpeg';
 
 const About = () => {
   return (
@@ -120,7 +119,7 @@ const About = () => {
                   
                   {/* Circular image */}
                   <img 
-                    src={bhartiImage}
+                    src='../../public/images/bharti.jpeg'
                     alt="Bharti Kumari"
                     style={{
                       width: '100%',

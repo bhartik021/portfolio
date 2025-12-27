@@ -17,19 +17,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|jpe?g|gif|svg|jpeg)$/i,
-        exclude: /node_modules/,
-        use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'images/',
-            publicPath: isGitHubPages ? '/portfolio/images/' : '/images/',
-            esModule: false,
-          },
-        },
-      },
-      {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
