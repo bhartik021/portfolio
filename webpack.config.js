@@ -9,11 +9,11 @@ const isGitHubPages = process.env.GITHUB_PAGES === 'true' || process.env.npm_pac
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    clean: true,
-    publicPath: isGitHubPages ? '/portfolio/' : '/',
-  },
+  path: path.resolve(__dirname, 'dist'),
+  filename: 'bundle.js',
+  clean: true,
+  publicPath: '/',
+},
   module: {
     rules: [
       {
