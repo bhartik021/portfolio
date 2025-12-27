@@ -123,7 +123,7 @@ const Hero = () => {
                   
                   {/* Circular image */}
                   <img 
-                    src='../../public/images/bharti.jpeg'
+                    src="/images/bharti.jpeg"
                     alt="Bharti Kumari"
                     style={{
                       width: '100%',
