@@ -1,177 +1,231 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+
+/*
+  BHARTI  — figlet standard
+   ____   _   _      _    ____   _____  ___
+  | __ ) | | | |   / \  |  _ \ |_   _||_ _|
+  |  _ \ | |_| |  / _ \ | |_) |  | |   | |
+  | |_) ||  _  | / ___ \|  _ <   | |   | |
+  |____/ |_| |_|/_/   \_\|_| \_\ |_|  |___|
+
+  KUMARI  — figlet standard
+   _  __  _   _   __  __    _    ____   ___
+  | |/ / | | | | |  \/  |  / \  |  _ \ |_ _|
+  | ' /  | | | | | |\/| | / _ \ | |_) | | |
+  | . \  | |_| | | |  | |/ ___ \|  _ <  | |
+  |_|\_\  \___/  |_|  |_/_/   \_\_| \_\|___|
+*/
+
+const BOOT_LINES = [
+  { text: '$ ssh bharti@portfolio.dev',                                              type: 'cmd',     delay: 0    },
+  { text: '  Connecting... [████████████████████████] 100%',                        type: 'info',    delay: 400  },
+  { text: '  ✓  Authentication successful  ·  Welcome back, Bharti',                type: 'ok',      delay: 820  },
+  { text: '',                                                                        type: 'empty',   delay: 980  },
+  { text: '  ────────────────────────────────────────────────────────────────────────────', type: 'dim',    delay: 1060 },
+  { text: '   ____   _   _      _    ____   _____  ___    _  __  _   _   __  __     _    ____   ___ ',                                    type: 'name1',  delay: 1110 },
+  { text: '  | __ ) | | | |   / \\  |  _ \\ |_   _||_ _| | |/ / | | | | |  \\/  |   / \\  |  _ \\ |_ _|',                               type: 'name1',  delay: 1150 },
+  { text: "  |  _ \\ | |_| |  / _ \\ | |_) |  | |   | |  | ' /  | | | | | |\\/| |  / _ \\ | |_) | | | ", type: 'name2',  delay: 1190 },
+  { text: '  | |_) ||  _  | / ___ \\|  _ <   | |   | |  | . \\  | |_| | | |  | | / ___ \\|  _ <  | | ', type: 'name2',  delay: 1230 },
+  { text: '  |____/ |_| |_|/_/   \\_\\|_| \\_\\  |_|  |___| |_|\\_\\  \\___/  |_|  |_|/_/   \\_\\_| \\_\\|___|', type: 'name2',  delay: 1270 },
+  { text: '  ────────────────────────────────────────────────────────────────────────────', type: 'dim',    delay: 1310 },
+  { text: '  Software Engineer  ·  Full Stack Developer  ·  Pune, India',            type: 'sub',     delay: 1370 },
+  { text: '',                                                                        type: 'empty',   delay: 1680 },
+  { text: '$ git log --oneline -3',                                                  type: 'cmd',     delay: 1880 },
+  { text: '  a3f8c21 (HEAD → main)  feat: Software Engineer @ miniOrange',          type: 'git',     delay: 2230 },
+  { text: '',                                                                        type: 'empty',   delay: 2380 },
+  { text: '$ cat stack.sh',                                                          type: 'cmd',     delay: 2580 },
+  { text: '  React  ·  Django  ·  PostgreSQL  ·  Redis  ·  Python  ·  C++',         type: 'out',     delay: 2930 },
+];
+
+const LINE_COLOR = {
+  cmd:   '#a855f7',
+  info:  '#6272a4',
+  ok:    '#50fa7b',
+  name1: '#a855f7',
+  name2: '#ec4899',
+  dim:   '#30363d',
+  sub:   '#8be9fd',
+  git:   '#f1fa8c',
+  out:   '#bd93f9',
+  empty: 'transparent',
+};
 
 const Hero = () => {
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const canvasRef               = useRef(null);
+  const [lines, setLines]       = useState([]);
+  const [showCTAs, setShowCTAs] = useState(false);
+
+  /* ── Matrix rain ── */
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const resize = () => { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; };
+    resize();
+
+    const ctx   = canvas.getContext('2d');
+    const CHARS = '01ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk@#$%^&*(){}[]<>/|;:.!?~`';
+    const FS    = 13;
+    const cols  = Math.floor(canvas.width / FS);
+    const drops = Array.from({ length: cols }, () => Math.random() * -120);
+
+    ctx.fillStyle = '#0d1117';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    const draw = () => {
+      ctx.fillStyle = 'rgba(13,17,23,0.055)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.font = `${FS}px "Fira Code", monospace`;
+      drops.forEach((y, i) => {
+        const ch   = CHARS[Math.floor(Math.random() * CHARS.length)];
+        const glow = Math.random() > 0.96;
+        ctx.fillStyle = glow ? 'rgba(168,85,247,0.95)' : 'rgba(168,85,247,0.18)';
+        ctx.fillText(ch, i * FS, y * FS);
+        if (y * FS > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i] += 0.7;
+      });
+    };
+
+    const id = setInterval(draw, 50);
+    window.addEventListener('resize', resize);
+    return () => { clearInterval(id); window.removeEventListener('resize', resize); };
+  }, []);
+
+  /* ── Boot sequence ── */
+  useEffect(() => {
+    const timers   = BOOT_LINES.map(l => setTimeout(() => setLines(prev => [...prev, l]), l.delay));
+    const ctaTimer = setTimeout(() => setShowCTAs(true), 3400);
+    return () => { timers.forEach(clearTimeout); clearTimeout(ctaTimer); };
+  }, []);
+
+  const skipIntro = () => { setLines(BOOT_LINES); setShowCTAs(true); };
+
+  const isBanner = t => t === 'name1' || t === 'name2';
 
   return (
-    <section id="home" className="section hero-section" style={{ paddingTop: 'clamp(80px, 15vw, 120px)', minHeight: 'clamp(500px, 90vh, 90vh)', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
-      {/* Decorative Elements */}
-      <div className="decorative-shape shape-circle" style={{ width: '300px', height: '300px', top: '10%', left: '-100px', opacity: 0.1 }}></div>
-      <div className="decorative-shape shape-square" style={{ width: '150px', height: '150px', top: '60%', right: '5%', opacity: 0.08 }}></div>
-      <div className="dotted-pattern" style={{ width: '200px', height: '200px', top: '30%', right: '15%', opacity: 0.2 }}></div>
-      
-      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="row align-items-center">
-          <div className="col-lg-6 col-12 hero-text">
-            <h1 className="hero-title" style={{ 
-              fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-              fontWeight: '500',
-              lineHeight: '1.1',
-              marginBottom: '25px',
-              color: 'var(--text-primary)',
-              letterSpacing: '-0.03em',
-              textAlign: 'left'
-            }}>
-              Bharti Kumari is a{' '}
-              <span style={{ color: 'var(--accent-primary)' }}>Software Engineer</span>{' '}
-              and{' '}
-              <span style={{ color: 'var(--accent-primary)' }}>Full Stack Developer</span>
-            </h1>
-            <p className="hero-description" style={{ 
-              fontSize: 'clamp(1rem, 2vw, 1.125rem)',
-              color: 'var(--text-secondary)',
-              marginBottom: '35px',
-              lineHeight: '1.6',
-              fontWeight: '400',
-              letterSpacing: '-0.01em',
-              textAlign: 'left'
-            }}>
-              She crafts responsive websites where technologies meet creativity.
-            </p>
-            <div className="hero-button-container" style={{ textAlign: 'left' }}>
-              <button 
-                className="btn-primary hero-cta-button"
-                onClick={scrollToContact}
-                style={{ fontSize: 'clamp(0.9rem, 2vw, 1rem)', padding: 'clamp(12px, 3vw, 12px) clamp(25px, 6vw, 30px)', minHeight: '48px', minWidth: '140px' }}
+    <section
+      id="home"
+      style={{
+        position: 'relative',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        paddingTop: '80px',
+        paddingBottom: '48px',
+        background: 'var(--bg-primary)',
+      }}
+    >
+      <canvas ref={canvasRef} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.5 }} />
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'radial-gradient(ellipse 75% 75% at 50% 50%, transparent 0%, rgba(13,17,23,0.75) 100%)',
+        zIndex: 1,
+      }} />
+
+      <div className="container" style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+
+        <div
+          className="terminal-boot-window"
+          style={{ width: '100%', maxWidth: '800px', animation: 'fadeInUp 0.55s ease both' }}
+        >
+          {/* Chrome bar */}
+          <div style={{
+            background: 'rgba(22,27,34,0.97)',
+            padding: '10px 18px',
+            borderRadius: '12px 12px 0 0',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '7px',
+            borderBottom: '1px solid rgba(168,85,247,0.22)',
+          }}>
+            <span className="editor-dot dot-red"    />
+            <span className="editor-dot dot-yellow" />
+            <span className="editor-dot dot-green"  />
+            <span style={{ flex: 1, textAlign: 'center', fontFamily: "'Fira Code', monospace", fontSize: '0.77rem', color: 'var(--text-muted)' }}>
+              bharti@portfolio: ~
+            </span>
+            {lines.length < BOOT_LINES.length && (
+              <button
+                onClick={skipIntro}
+                style={{
+                  background: 'none', border: '1px solid var(--border-color)', borderRadius: '4px',
+                  color: 'var(--text-muted)', fontFamily: "'Fira Code', monospace",
+                  fontSize: '0.68rem', padding: '2px 8px', cursor: 'pointer',
+                  transition: 'color 0.2s, border-color 0.2s',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent-primary)'; e.currentTarget.style.borderColor = 'var(--accent-primary)'; }}
+                onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-muted)';     e.currentTarget.style.borderColor = 'var(--border-color)'; }}
               >
-                Contact me !!
+                skip
               </button>
-            </div>
+            )}
           </div>
-          <div className="col-lg-6 col-12 hero-image" style={{ position: 'relative', paddingTop: 'clamp(20px, 5vw, 50px)', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-            <div style={{
-              width: '100%',
-              maxWidth: '320px',
-              position: 'relative',
-              zIndex: 1,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: '0 auto'
-            }}>
-              {/* Main circular image container with gradient border */}
-              <div className="hero-image-container" style={{
-                position: 'relative',
-                width: 'clamp(220px, 40vw, 300px)',
-                height: 'clamp(220px, 40vw, 300px)',
-                borderRadius: '50%',
-                padding: '6px',
-                background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))',
-                boxShadow: '0 15px 40px rgba(168, 85, 247, 0.3)',
-                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                zIndex: 1,
-                margin: '0 auto'
-              }}
-              onMouseEnter={(e) => {
-                if (window.innerWidth > 768) {
-                  e.currentTarget.style.transform = 'translateY(-8px) scale(1.05)';
-                  e.currentTarget.style.boxShadow = '0 20px 50px rgba(168, 85, 247, 0.4)';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (window.innerWidth > 768) {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 15px 40px rgba(168, 85, 247, 0.3)';
-                }
-              }}
+
+          {/* Output */}
+          <div style={{
+            padding: '20px 28px 24px',
+            fontFamily: "'Fira Code', monospace",
+            lineHeight: 1.9,
+            minHeight: 'clamp(340px, 48vw, 500px)',
+            overflowX: 'auto',
+          }}>
+            {lines.map((line, i) => (
+              <div
+                key={i}
+                style={{
+                  color: LINE_COLOR[line.type],
+                  fontSize: isBanner(line.type)
+                    ? 'clamp(0.48rem, 0.9vw, 0.62rem)'
+                    : 'clamp(0.75rem, 1.6vw, 0.87rem)',
+                  lineHeight: isBanner(line.type) ? 1.5 : 1.9,
+                  fontWeight: isBanner(line.type) ? 600 : 400,
+                  opacity: line.type === 'dim' ? 0.3 : 1,
+                  minHeight: line.type === 'empty' ? '0.5em' : 'auto',
+                  whiteSpace: 'pre',
+                  animation: 'fadeInUp 0.15s ease both',
+                  letterSpacing: isBanner(line.type) ? '0.01em' : 0,
+                }}
               >
-                {/* Inner circular container */}
-                <div style={{
-                  width: '100%',
-                  height: '100%',
-                  borderRadius: '50%',
-                  overflow: 'hidden',
-                  background: 'var(--bg-secondary)',
-                  border: '3px solid var(--bg-secondary)',
-                  position: 'relative'
-                }}>
-                  {/* Decorative shapes behind image */}
-                  <div className="decorative-shape shape-circle" style={{ 
-                    width: '200px', 
-                    height: '200px', 
-                    top: '-80px', 
-                    right: '-80px', 
-                    opacity: 0.15, 
-                    zIndex: 0,
-                    background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))'
-                  }}></div>
-                  <div className="decorative-shape shape-circle" style={{ 
-                    width: '120px', 
-                    height: '120px', 
-                    bottom: '-40px', 
-                    left: '-40px', 
-                    opacity: 0.12, 
-                    zIndex: 0,
-                    background: 'linear-gradient(135deg, var(--accent-secondary), var(--accent-primary))'
-                  }}></div>
-                  
-                  {/* Circular image */}
-                  <img 
-                    src="/images/bharti.jpeg"
-                    alt="Bharti Kumari"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      objectPosition: 'center center',
-                      position: 'relative',
-                      zIndex: 1,
-                      display: 'block',
-                      borderRadius: '50%'
-                    }}
-                  />
-                </div>
+                {line.text}
               </div>
-              
-              {/* Status badge - positioned below circle */}
-              <div className="status-badge" style={{
-                marginTop: 'clamp(20px, 4vw, 30px)',
-                background: 'rgba(22, 27, 34, 0.95)',
-                border: '1px solid rgba(168, 85, 247, 0.3)',
-                borderRadius: '12px',
-                padding: 'clamp(10px, 2vw, 12px) clamp(15px, 4vw, 24px)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 'clamp(8px, 2vw, 12px)',
-                backdropFilter: 'blur(20px)',
-                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-                zIndex: 2,
-                width: 'fit-content',
-                maxWidth: 'calc(100% - 20px)',
-                boxSizing: 'border-box'
-              }}>
-                <div style={{
-                  width: '8px',
-                  height: '8px',
-                  borderRadius: '50%',
-                  background: 'var(--accent-primary)',
-                  boxShadow: '0 0 10px var(--accent-primary)',
-                  animation: 'pulse 2s ease-in-out infinite',
-                  flexShrink: 0
-                }}></div>
-                <span className="status-text" style={{ color: 'var(--text-primary)', fontSize: 'clamp(0.75rem, 2vw, 0.9rem)', fontWeight: '500', whiteSpace: 'normal', wordBreak: 'break-word' }}>
-                  Available for opportunities
-                </span>
-              </div>
+            ))}
+
+            <div style={{ display: 'flex', alignItems: 'center', marginTop: '6px', fontSize: 'clamp(0.75rem, 1.6vw, 0.87rem)' }}>
+              <span style={{ color: 'var(--accent-primary)' }}>$&nbsp;</span>
+              <span className="typing-cursor" />
             </div>
           </div>
         </div>
+
+        {/* CTAs */}
+        <div style={{
+          display: 'flex', gap: '16px', marginTop: '32px',
+          flexWrap: 'wrap', justifyContent: 'center',
+          opacity: showCTAs ? 1 : 0,
+          transform: showCTAs ? 'translateY(0)' : 'translateY(12px)',
+          transition: 'opacity 0.5s ease, transform 0.5s ease',
+        }}>
+          <button
+            className="btn-primary"
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            style={{ minHeight: '44px' }}
+          >
+            <span style={{ color: 'var(--accent-secondary)' }}>$</span>&nbsp;./contact-me.sh
+          </button>
+          <a
+            href="https://github.com/bhartik021"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', minHeight: '44px' }}
+          >
+            <i className="fab fa-github" />
+            github.com/bhartik021
+          </a>
+        </div>
+
       </div>
     </section>
   );

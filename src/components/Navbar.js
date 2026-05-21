@@ -9,7 +9,7 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
       
-      const sections = ['home', 'projects', 'skills', 'experience', 'about', 'contact'];
+      const sections = ['home', 'projects', 'skills', 'experience', 'education', 'achievements', 'about', 'contact'];
       const scrollPosition = window.scrollY + 100;
       
       for (const section of sections) {
@@ -59,12 +59,12 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { id: 'home', label: '#home' },
-    { id: 'projects', label: '#projects' },
-    { id: 'skills', label: '#skills' },
+    { id: 'home',       label: '#home'       },
+    { id: 'projects',   label: '#projects'   },
+    { id: 'skills',     label: '#skills'     },
     { id: 'experience', label: '#experience' },
-    { id: 'about', label: '#about-me' },
-    { id: 'contact', label: '#contacts' }
+    { id: 'about',      label: '#about-me'   },
+    { id: 'contact',    label: '#contacts'   },
   ];
 
   return (
@@ -89,29 +89,31 @@ const Navbar = () => {
           gap: '20px'
         }}>
           {/* Logo */}
-          <a 
-            href="#home" 
-            onClick={(e) => { e.preventDefault(); scrollToSection('home'); }} 
-            style={{ 
-              color: 'var(--text-primary)', 
-              fontSize: 'clamp(1.2rem, 4vw, 1.5rem)', 
-              fontWeight: '500',
+          <a
+            href="#home"
+            onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}
+            style={{
               textDecoration: 'none',
-              letterSpacing: '-0.02em',
-              whiteSpace: 'nowrap'
+              whiteSpace: 'nowrap',
+              fontFamily: "'Fira Code', monospace",
+              fontSize: 'clamp(1rem, 3vw, 1.25rem)',
+              fontWeight: 600,
+              letterSpacing: '-0.01em',
             }}
           >
-            Bharti Kumari
+            <span style={{ color: 'var(--accent-secondary)' }}>{'<'}</span>
+            <span style={{ color: 'var(--text-primary)' }}>BK</span>
+            <span style={{ color: 'var(--accent-secondary)' }}>{' />'}</span>
           </a>
 
           {/* Desktop Navigation Links */}
-          <div className="desktop-nav" style={{ 
-            display: 'flex', 
-            gap: '30px', 
+          <div className="desktop-nav" style={{
+            display: 'flex',
+            gap: '20px',
             alignItems: 'center',
-            flexWrap: 'wrap'
+            flexWrap: 'nowrap'
           }}>
-            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '14px', flexWrap: 'nowrap' }}>
               {navLinks.map((link) => (
                 <a
                   key={link.id}
@@ -120,10 +122,11 @@ const Navbar = () => {
                   style={{
                     color: activeSection === link.id ? 'var(--accent-primary)' : 'var(--text-secondary)',
                     textDecoration: 'none',
-                    fontSize: '0.95rem',
+                    fontSize: '0.82rem',
                     fontWeight: activeSection === link.id ? '500' : '400',
                     transition: 'all 0.3s ease',
-                    letterSpacing: '-0.01em'
+                    letterSpacing: '-0.01em',
+                    whiteSpace: 'nowrap',
                   }}
                 >
                   {link.label}
@@ -131,12 +134,31 @@ const Navbar = () => {
               ))}
             </div>
 
+            {/* Resume download */}
+            <a
+              href="/resume.pdf"
+              download
+              className="btn-primary"
+              style={{
+                fontSize: '0.8rem',
+                padding: '7px 14px',
+                minHeight: 'unset',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                marginLeft: '8px',
+              }}
+            >
+              <i className="fas fa-download" style={{ fontSize: '0.75rem' }} />
+              resume.pdf
+            </a>
+
             {/* Social Icons */}
-            <div style={{ 
-              display: 'flex', 
-              gap: '15px', 
-              marginLeft: '20px', 
-              paddingLeft: '20px', 
+            <div style={{
+              display: 'flex',
+              gap: '15px',
+              marginLeft: '16px',
+              paddingLeft: '16px',
               borderLeft: '1px solid var(--border-color)'
             }}>
               <a href="https://github.com/bhartik021" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-secondary)', fontSize: '1.2rem' }}>

@@ -1,42 +1,83 @@
 import React from 'react';
 
-const Quote = () => {
-  return (
-    <section className="section quote-section" style={{ padding: '80px 0', textAlign: 'center' }}>
-      <div className="container">
-        <div className="quote-container" style={{ maxWidth: '800px', margin: '0 auto', position: 'relative', padding: '0 20px' }}>
-          <div className="quote-mark quote-mark-left" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)', color: 'var(--accent-primary)', opacity: 0.3, position: 'absolute', left: 'clamp(-30px, -5vw, -50px)', top: '-20px' }}>
-            "
-          </div>
-          <h2 style={{ 
-            fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
-            fontWeight: '500',
-            color: 'var(--text-primary)',
-            marginBottom: '20px',
-            fontStyle: 'italic',
-            lineHeight: '1.4',
-            letterSpacing: '-0.02em',
-            padding: '0 clamp(10px, 5vw, 0)'
-          }}>
-            First, solve the problem. Then, write the code.
-          </h2>
-          <p style={{ 
-            color: 'var(--text-secondary)',
-            fontSize: 'clamp(0.9rem, 2vw, 1rem)',
-            marginTop: '30px',
-            fontWeight: '400',
-            letterSpacing: '-0.01em'
-          }}>
-            - John Johnson
-          </p>
-          <div className="quote-mark quote-mark-right" style={{ fontSize: 'clamp(3rem, 8vw, 5rem)', color: 'var(--accent-primary)', opacity: 0.3, position: 'absolute', right: 'clamp(-30px, -5vw, -50px)', bottom: '-40px', transform: 'rotate(180deg)' }}>
-            "
-          </div>
-        </div>
+const stats = [
+  { key: 'articles_published', value: '150+', color: '#f1fa8c' },
+  { key: 'total_views',        value: '90K+', color: '#50fa7b' },
+  { key: 'yrs_experience',     value: '2+',   color: '#8be9fd' },
+  { key: 'technologies',       value: '6+',   color: '#ff79c6' },
+  { key: 'top_50_awards',      value: '3',    color: '#ffb86c' },
+  { key: 'cgpa',               value: '9.61', color: '#bd93f9' },
+];
+
+const Quote = () => (
+  <section style={{ padding: '40px 0', background: 'var(--bg-secondary)', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)' }}>
+    <div className="container">
+
+      {/* prompt label */}
+      <div style={{
+        fontFamily: "'Fira Code', monospace",
+        fontSize: '0.72rem',
+        color: 'var(--text-muted)',
+        marginBottom: '24px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '6px',
+      }}>
+        <span style={{ color: '#50fa7b' }}>bharti</span>
+        <span>@portfolio</span>
+        <span style={{ color: '#8be9fd' }}> ~/stats</span>
+        <span style={{ color: 'var(--accent-primary)' }}> $</span>
+        <span> uptime --portfolio</span>
       </div>
-    </section>
-  );
-};
+
+      {/* stats grid */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',
+        gap: '1px',
+        background: 'var(--border-color)',
+        border: '1px solid var(--border-color)',
+        borderRadius: '8px',
+        overflow: 'hidden',
+      }}>
+        {stats.map((s) => (
+          <div
+            key={s.key}
+            style={{
+              background: 'var(--bg-primary)',
+              padding: '20px 16px',
+              textAlign: 'center',
+              transition: 'background 0.2s',
+              cursor: 'default',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'var(--bg-tertiary)'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'var(--bg-primary)'; }}
+          >
+            <div style={{
+              fontFamily: "'Fira Code', monospace",
+              fontSize: 'clamp(1.3rem, 3vw, 1.7rem)',
+              fontWeight: 700,
+              color: s.color,
+              lineHeight: 1,
+              marginBottom: '8px',
+            }}>
+              {s.value}
+            </div>
+            <div style={{
+              fontFamily: "'Fira Code', monospace",
+              fontSize: '0.65rem',
+              color: 'var(--text-muted)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.08em',
+            }}>
+              {s.key.replace(/_/g, ' ')}
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+);
 
 export default Quote;
-

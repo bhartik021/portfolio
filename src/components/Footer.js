@@ -1,89 +1,110 @@
 import React from 'react';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
     <footer style={{
       background: 'var(--bg-primary)',
       borderTop: '1px solid var(--border-color)',
-      padding: '50px 0 30px',
+      padding: '40px 0 24px',
     }}>
       <div className="container">
-        <div className="row">
-          {/* Left Column - Logo and Info */}
-          <div className="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
-            <h3 style={{ 
-              color: 'var(--text-primary)', 
-              fontSize: 'clamp(1.25rem, 3vw, 1.5rem)',
-              fontWeight: '500',
-              marginBottom: '15px',
-              letterSpacing: '-0.02em',
-              textAlign: 'center'
+        <div className="row align-items-center">
+
+          {/* Left: code logo + tagline */}
+          <div className="col-lg-4 col-12 mb-4 mb-lg-0" style={{ textAlign: 'center' }}>
+            <div style={{
+              fontFamily: "'Fira Code', monospace",
+              fontSize: 'clamp(1.1rem, 3vw, 1.3rem)',
+              fontWeight: 700,
+              marginBottom: '8px',
             }}>
-              Bharti Kumari
-            </h3>
-            <p style={{ 
-              color: 'var(--text-secondary)', 
-              fontSize: 'clamp(0.9rem, 2vw, 0.95rem)',
-              marginBottom: '5px',
-              fontWeight: '400',
-              letterSpacing: '-0.01em',
-              textAlign: 'center'
+              <span style={{ color: 'var(--accent-secondary)' }}>{'<'}</span>
+              <span style={{ color: 'var(--text-primary)' }}>BK</span>
+              <span style={{ color: 'var(--accent-secondary)' }}>{' />'}</span>
+            </div>
+            <p style={{
+              color: 'var(--text-muted)',
+              fontSize: '0.8rem',
+              fontFamily: "'Fira Code', monospace",
+              letterSpacing: 0,
+              margin: 0,
             }}>
-              <a href="mailto:bhartik021@gmail.com" style={{ color: 'var(--text-secondary)', textDecoration: 'none', wordBreak: 'break-word' }}>
-                bhartik021@gmail.com
-              </a>
-            </p>
-            <p style={{ 
-              color: 'var(--text-secondary)', 
-              fontSize: 'clamp(0.9rem, 2vw, 0.95rem)',
-              fontWeight: '400',
-              letterSpacing: '-0.01em',
-              textAlign: 'center'
-            }}>
-              Software Engineer and Full Stack Developer
+              <span style={{ color: 'var(--accent-secondary)' }}>// </span>
+              software engineer &amp; full stack dev
             </p>
           </div>
 
-          {/* Center Column - Copyright */}
-          <div className="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0" style={{ textAlign: 'center' }}>
-            <p style={{ 
-              color: 'var(--text-muted)', 
-              fontSize: 'clamp(0.85rem, 2vw, 0.9rem)',
-              fontWeight: '400',
-              letterSpacing: '-0.01em'
+          {/* Center: copyright */}
+          <div className="col-lg-4 col-12 mb-4 mb-lg-0" style={{ textAlign: 'center' }}>
+            <p style={{
+              color: 'var(--text-muted)',
+              fontSize: '0.8rem',
+              fontFamily: "'Fira Code', monospace",
+              margin: 0,
+              letterSpacing: 0,
             }}>
-              © Copyright {currentYear}. Made by Bharti Kumari
+              © {year} Bharti Kumari
+            </p>
+            <p style={{
+              color: 'var(--text-muted)',
+              fontSize: '0.75rem',
+              fontFamily: "'Fira Code', monospace",
+              marginTop: '4px',
+              letterSpacing: 0,
+            }}>
+              <span style={{ color: 'var(--accent-primary)' }}>built with</span> React ♥
             </p>
           </div>
 
-          {/* Right Column - Media/Social */}
-          <div className="col-lg-4 col-md-12 col-12" style={{ textAlign: 'center' }}>
-            <h4 style={{ 
-              color: 'var(--text-primary)', 
-              fontSize: 'clamp(0.95rem, 2vw, 1rem)',
-              fontWeight: '500',
-              marginBottom: '15px',
-              letterSpacing: '-0.01em'
+          {/* Right: social icons */}
+          <div className="col-lg-4 col-12" style={{ textAlign: 'center' }}>
+            <p style={{
+              color: 'var(--text-muted)',
+              fontSize: '0.72rem',
+              textTransform: 'uppercase',
+              letterSpacing: '0.08em',
+              marginBottom: '12px',
+              fontFamily: "'Fira Code', monospace",
             }}>
-              Media
-            </h4>
-            <div style={{ display: 'flex', gap: '15px', justifyContent: 'center' }}>
-              <a href="https://github.com/bhartik021" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-secondary)', fontSize: 'clamp(1.25rem, 3vw, 1.5rem)' }}>
-                <i className="fab fa-github"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/bhartik021/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-secondary)', fontSize: 'clamp(1.25rem, 3vw, 1.5rem)' }}>
-                <i className="fab fa-linkedin"></i>
-              </a>
-              <a href="https://leetcode.com/u/bhartik021/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-secondary)', fontSize: 'clamp(1.25rem, 3vw, 1.5rem)' }}>
-                <i className="fas fa-code"></i>
-              </a>
-              <a href="https://medium.com/@bhartik021" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-secondary)', fontSize: 'clamp(1.25rem, 3vw, 1.5rem)' }}>
-                <i className="fab fa-medium"></i>
-              </a>
+              find me on
+            </p>
+            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center' }}>
+              {[
+                { href: 'https://github.com/bhartik021', icon: 'fab fa-github', label: 'GitHub' },
+                { href: 'https://www.linkedin.com/in/bhartik021/', icon: 'fab fa-linkedin', label: 'LinkedIn' },
+                { href: 'https://leetcode.com/u/bhartik021/', icon: 'fas fa-code', label: 'LeetCode' },
+                { href: 'https://medium.com/@bhartik021', icon: 'fab fa-medium', label: 'Medium' },
+              ].map(({ href, icon, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={label}
+                  style={{
+                    color: 'var(--text-muted)',
+                    fontSize: '1.25rem',
+                    transition: 'color 0.2s ease, transform 0.2s ease',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.color = 'var(--accent-primary)';
+                    e.currentTarget.style.transform = 'translateY(-3px)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.color = 'var(--text-muted)';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  <i className={icon} />
+                </a>
+              ))}
             </div>
           </div>
+
         </div>
       </div>
     </footer>
