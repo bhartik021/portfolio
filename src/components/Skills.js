@@ -93,7 +93,7 @@ const Skills = () => (
 
       <div className="row">
         {skillCategories.map((cat, i) => (
-          <div key={i} className="col-lg-4 col-md-6 col-12 mb-4">
+          <div key={i} className="col-lg-4 col-md-6 col-12 mb-4 anim" style={{ transitionDelay: `${i * 0.1}s` }}>
             <FileTreeCard cat={cat} />
           </div>
         ))}

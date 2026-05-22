@@ -136,8 +136,9 @@ const Navbar = () => {
 
             {/* Resume download */}
             <a
-              href="/resume.pdf"
-              download
+              href="https://drive.google.com/file/d/1qfwQ3nq5WNeohTcg7HgMq4aTQI-OYDRh/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary"
               style={{
                 fontSize: '0.8rem',
@@ -191,7 +192,6 @@ const Navbar = () => {
               transition: 'all 0.3s ease',
               minWidth: '44px',
               minHeight: '44px',
-              display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               zIndex: 1001,

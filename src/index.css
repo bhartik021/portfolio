@@ -311,7 +311,7 @@ a:hover {
 @media (max-width: 992px) {
   .hero-section {
     min-height: auto !important;
-    padding-top: clamp(80px, 12vw, 100px) !important;
+    padding-top: 90px !important;
   }
 
   .hero-text {
@@ -408,12 +408,12 @@ a:hover {
 
   /* Hero section adjustments */
   #home {
-    padding-top: clamp(80px, 12vw, 100px) !important;
+    padding-top: 90px !important;
     min-height: auto !important;
   }
 
   #home .hero-section {
-    padding-top: clamp(80px, 12vw, 100px) !important;
+    padding-top: 90px !important;
     min-height: auto !important;
   }
 
@@ -559,12 +559,12 @@ a:hover {
 
   /* Hero section mobile */
   #home {
-    padding-top: clamp(70px, 10vw, 90px) !important;
+    padding-top: 90px !important;
     min-height: auto !important;
   }
 
   #home .hero-section {
-    padding-top: clamp(70px, 10vw, 90px) !important;
+    padding-top: 90px !important;
     min-height: auto !important;
   }
 
@@ -777,12 +777,12 @@ a:hover {
   
   /* Hero photo section responsive */
   #home {
-    padding-top: clamp(60px, 8vw, 80px) !important;
+    padding-top: 90px !important;
     min-height: auto !important;
   }
 
   #home .hero-section {
-    padding-top: clamp(60px, 8vw, 80px) !important;
+    padding-top: 90px !important;
     min-height: auto !important;
   }
 
@@ -1996,5 +1996,165 @@ body::after {
 @media (max-width: 600px) {
   .ascii-logo-block {
     display: none;
+  }
+}
+
+/* ── Scroll-reveal base ── */
+.anim {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.anim.anim-left  { transform: translateX(-32px); }
+.anim.anim-right { transform: translateX(32px); }
+.anim.anim-scale { transform: scale(0.9); }
+.anim.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Keyframe animations ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 6px currentColor; }
+  50%       { box-shadow: 0 0 18px currentColor, 0 0 32px currentColor; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes border-glow {
+  0%, 100% { border-color: var(--accent-primary); }
+  50%       { border-color: var(--accent-secondary); }
+}
+
+@keyframes scan-line {
+  0%   { top: -10%; }
+  100% { top: 110%; }
+}
+
+@keyframes node-pop {
+  0%   { transform: scale(0); opacity: 0; }
+  70%  { transform: scale(1.25); }
+  100% { transform: scale(1);    opacity: 1; }
+}
+
+/* ── Ambient glow on terminal-boot-window ── */
+.terminal-boot-window {
+  animation: border-glow 4s ease-in-out infinite;
+}
+
+/* ── Floating profile image ── */
+.about-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* ── Shimmering skill pills on hover ── */
+.skill-pill {
+  position: relative;
+  overflow: hidden;
+}
+.skill-pill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%);
+  background-size: 200% 100%;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.skill-pill:hover::after {
+  opacity: 1;
+  animation: shimmer 0.6s ease forwards;
+}
+
+/* ── Pulsing timeline nodes ── */
+.timeline-node {
+  animation: node-pop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+  animation-play-state: paused;
+}
+.anim.is-visible .timeline-node {
+  animation-play-state: running;
+}
+
+/* ── Git node pulse ── */
+.git-node {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* ── Scan-line effect on terminal-window hover ── */
+.terminal-window {
+  position: relative;
+  overflow: hidden;
+}
+.terminal-window::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(168,85,247,0.25), transparent);
+  top: -10%;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.terminal-window:hover::before {
+  opacity: 1;
+  animation: scan-line 1.8s linear infinite;
+}
+
+/* ── Animated gradient border on project cards (hover) ── */
+@keyframes gradient-border {
+  0%   { border-top-color: var(--accent-primary); }
+  50%  { border-top-color: var(--accent-secondary); }
+  100% { border-top-color: var(--accent-primary); }
+}
+.project-card:hover {
+  animation: gradient-border 2s linear infinite;
+}
+
+/* ── Hero mobile name fallback ── */
+.hero-name-mobile {
+  display: none;
+  font-family: 'Fira Code', monospace;
+  margin-bottom: 6px;
+}
+
+/* ── Hero terminal output mobile padding ── */
+@media (max-width: 600px) {
+  /* Hide wide ASCII art, show plain name instead */
+  .ascii-banner-line { display: none !important; }
+  .hero-name-mobile  { display: block !important; }
+
+  .hero-terminal-output {
+    padding: 14px 14px 18px !important;
+  }
+}
+
+/* ── Navbar mobile fixes ── */
+@media (max-width: 992px) {
+  /* hamburger: flex when menu is open, else inline-flex */
+  .mobile-menu-btn {
+    display: inline-flex !important;
+  }
+
+  /* prevent container gap from pushing button off-screen */
+  .navbar-container {
+    gap: 12px !important;
+  }
+}
+
+@media (min-width: 993px) {
+  /* ensure hamburger never shows on desktop */
+  .mobile-menu-btn {
+    display: none !important;
   }
 }

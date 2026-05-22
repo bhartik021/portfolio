@@ -2,32 +2,63 @@ import React from 'react';
 
 const achievements = [
   {
-    hash: 'f1a2b3c',
     iconType: 'emoji',
     icon: '🏆',
     title: 'Smart India Hackathon',
+    tag: 'National Finalist',
+    tagColor: '#f1fa8c',
     description: 'Selected as National Finalist among 44,000+ teams nationwide, organised by Ministry of Education (MHRD).',
+    accentColor: '#f1fa8c',
   },
   {
-    hash: 'e4d5c6b',
     iconType: 'amazon',
     title: 'Amazon ML Summer School',
+    tag: 'Mentee',
+    tagColor: '#FF9900',
     description: 'Chosen by Amazon as an ML Summer Mentee from over 40,000+ applicants across India.',
+    accentColor: '#FF9900',
   },
   {
-    hash: 'a7b8c9d',
     iconType: 'samsung',
     title: 'Samsung Solve for Tomorrow',
+    tag: 'Top 50 India',
+    tagColor: '#4a9eff',
     description: 'Ranked in the Top 50 teams across India out of 18,000+ competing teams.',
+    accentColor: '#4a9eff',
   },
   {
-    hash: 'd2e3f4a',
     iconType: 'emoji',
     icon: '✍️',
     title: 'Technical Writing',
+    tag: '90K+ Views',
+    tagColor: '#50fa7b',
     description: 'Published 150+ technical articles across platforms accumulating over 90,000 views.',
+    accentColor: '#50fa7b',
   },
 ];
+
+const AchievementIcon = ({ a }) => {
+  if (a.iconType === 'amazon') {
+    return <i className="fab fa-amazon" style={{ color: '#FF9900', fontSize: '1.6rem' }} />;
+  }
+  if (a.iconType === 'samsung') {
+    return (
+      <svg width="44" height="22" viewBox="0 0 110 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="110" height="36" rx="18" fill="#1428A0"/>
+        <text
+          x="55" y="25"
+          textAnchor="middle"
+          fill="white"
+          fontFamily="Arial,Helvetica,sans-serif"
+          fontWeight="bold"
+          fontSize="17"
+          letterSpacing="3"
+        >SAMSUNG</text>
+      </svg>
+    );
+  }
+  return <span style={{ fontSize: '1.6rem', lineHeight: 1 }}>{a.icon}</span>;
+};
 
 const Achievements = () => (
   <section id="achievements" className="section" style={{ background: 'var(--bg-secondary)', position: 'relative', overflow: 'hidden' }}>
@@ -36,77 +67,79 @@ const Achievements = () => (
     <div className="container" style={{ position: 'relative', zIndex: 1 }}>
       <h2 className="section-title">achievements</h2>
 
-      {/* git log label */}
-      <div style={{
-        fontFamily: "'Fira Code', monospace",
-        fontSize: '0.78rem',
-        color: 'var(--text-muted)',
-        marginBottom: '28px',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-      }}>
-        <i className="fas fa-trophy" style={{ color: '#f1fa8c' }} />
-        <span style={{ color: 'var(--accent-primary)' }}>git log</span>
-        <span>--tags --oneline</span>
-      </div>
-
       <div className="row">
         {achievements.map((a, i) => (
           <div key={i} className="col-lg-6 col-12 mb-4">
-            <div className="editor-window" style={{ height: 'auto' }}>
-              {/* editor chrome */}
-              <div className="editor-header">
-                <span className="editor-dot dot-red"   />
-                <span className="editor-dot dot-yellow"/>
-                <span className="editor-dot dot-green" />
-                <span className="editor-filename">{a.hash}</span>
+            <div
+              className="anim"
+              style={{ transitionDelay: `${i * 0.11}s`,
+                background: 'var(--bg-primary)',
+                border: '1px solid var(--border-color)',
+                borderLeft: `4px solid ${a.accentColor}`,
+                borderRadius: '0 10px 10px 0',
+                padding: '22px 24px',
+                height: '100%',
+                display: 'flex',
+                gap: '18px',
+                alignItems: 'flex-start',
+                transition: 'box-shadow 0.2s ease, transform 0.2s ease',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.boxShadow = `0 8px 28px ${a.accentColor}18`;
+                e.currentTarget.style.transform = 'translateY(-2px)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.transform = 'translateY(0)';
+              }}
+            >
+              {/* icon */}
+              <div style={{
+                width: '48px',
+                height: '48px',
+                borderRadius: '10px',
+                background: `${a.accentColor}12`,
+                border: `1px solid ${a.accentColor}30`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+              }}>
+                <AchievementIcon a={a} />
               </div>
 
-              <div className="editor-body" style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-                <span style={{ fontSize: '2rem', lineHeight: 1, flexShrink: 0 }}>
-                  {a.iconType === 'emoji' && a.icon}
-                  {a.iconType === 'amazon' && (
-                    <i className="fab fa-amazon" style={{ color: '#FF9900', fontSize: '1.8rem' }} />
-                  )}
-                  {a.iconType === 'samsung' && (
-                    <span style={{
-                      fontFamily: "'Fira Sans', sans-serif",
-                      fontWeight: 700,
-                      fontSize: '0.9rem',
-                      letterSpacing: '0.08em',
-                      color: '#1428A0',
-                      background: 'rgba(20,40,160,0.1)',
-                      border: '1px solid rgba(20,40,160,0.3)',
-                      padding: '4px 8px',
-                      borderRadius: '4px',
-                      display: 'inline-block',
-                      lineHeight: 1.4,
-                    }}>
-                      SAMSUNG
-                    </span>
-                  )}
-                </span>
-                <div>
+              {/* content */}
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginBottom: '8px' }}>
                   <h3 style={{
                     color: 'var(--text-primary)',
-                    fontSize: 'clamp(1rem, 2.5vw, 1.15rem)',
+                    fontSize: 'clamp(0.95rem, 2.2vw, 1.05rem)',
                     fontWeight: 600,
-                    marginBottom: '8px',
-                    fontFamily: "'Fira Code', monospace",
-                    letterSpacing: '-0.01em',
+                    margin: 0,
                   }}>
                     {a.title}
                   </h3>
-                  <p style={{
-                    color: 'var(--text-secondary)',
-                    fontSize: 'clamp(0.85rem, 1.8vw, 0.92rem)',
-                    lineHeight: 1.65,
-                    margin: 0,
+                  <span style={{
+                    fontFamily: "'Fira Code', monospace",
+                    fontSize: '0.7rem',
+                    color: a.tagColor,
+                    background: `${a.accentColor}12`,
+                    border: `1px solid ${a.accentColor}35`,
+                    padding: '2px 8px',
+                    borderRadius: '10px',
+                    whiteSpace: 'nowrap',
                   }}>
-                    {a.description}
-                  </p>
+                    {a.tag}
+                  </span>
                 </div>
+                <p style={{
+                  color: 'var(--text-secondary)',
+                  fontSize: 'clamp(0.85rem, 1.8vw, 0.92rem)',
+                  lineHeight: 1.65,
+                  margin: 0,
+                }}>
+                  {a.description}
+                </p>
               </div>
             </div>
           </div>

@@ -1,5 +1,29 @@
 import React from 'react';
 
+const links = [
+  {
+    type: 'linkedin',
+    url:  'linkedin.com/in/bhartik021',
+    href: 'https://www.linkedin.com/in/bhartik021/',
+    color: '#0a66c2',
+    bg:   'rgba(10,102,194,0.08)',
+  },
+  {
+    type: 'email',
+    url:  'bhartik021@gmail.com',
+    href: 'mailto:bhartik021@gmail.com',
+    color: '#a855f7',
+    bg:   'rgba(168,85,247,0.08)',
+  },
+  {
+    type: 'leetcode',
+    url:  'leetcode.com/u/bhartik021',
+    href: 'https://leetcode.com/u/bhartik021/',
+    color: '#ffa116',
+    bg:   'rgba(255,161,22,0.08)',
+  },
+];
+
 const Contact = () => (
   <section id="contact" className="section" style={{ background: 'var(--bg-secondary)', position: 'relative', overflow: 'hidden' }}>
     <div className="dotted-pattern" style={{ width: '200px', height: '200px', top: '20%', left: '3%', opacity: 0.1 }} />
@@ -10,41 +34,129 @@ const Contact = () => (
 
       <div style={{ maxWidth: '560px' }}>
         <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.92rem, 2vw, 1rem)', lineHeight: 1.75, marginBottom: '20px' }}>
-          I'm open to freelance opportunities and full-time roles. If you have a project,
-          question, or just want to say hi — reach out.
+          I'm open to freelance opportunities and full-time roles. If you have a
+          project, question, or just want to say hi — reach out.
         </p>
 
-        <div style={{ fontFamily: "'Fira Code', monospace", fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 2.1, marginBottom: '24px' }}>
+        <div style={{ fontFamily: "'Fira Code', monospace", fontSize: '0.82rem', color: 'var(--text-muted)', lineHeight: 2.1, marginBottom: '28px' }}>
           <div><span style={{ color: 'var(--accent-secondary)' }}>// </span>response_time: &lt; 24h</div>
           <div><span style={{ color: 'var(--accent-secondary)' }}>// </span>open_to: full-time &amp; freelance</div>
           <div><span style={{ color: 'var(--accent-secondary)' }}>// </span>location: Pune, India</div>
         </div>
 
-        {/* Direct links */}
-        <div className="terminal-window">
+        <div className="terminal-window anim" style={{ transitionDelay: '0.2s' }}>
           <div className="terminal-header">
             <span className="editor-dot dot-red" />
             <span className="editor-dot dot-yellow" />
             <span className="editor-dot dot-green" />
-            <span className="terminal-title">direct links</span>
+            <span className="terminal-title">contacts.sh</span>
           </div>
-          <div className="terminal-body" style={{ padding: '16px 18px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '14px', flexWrap: 'wrap' }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '6px', background: 'rgba(10,102,194,0.12)', border: '1px solid rgba(10,102,194,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <i className="fab fa-linkedin" style={{ color: '#0a66c2', fontSize: '0.95rem' }} />
-              </div>
-              <a href="https://www.linkedin.com/in/bhartik021/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-primary)', fontFamily: "'Fira Code', monospace", fontSize: '0.82rem', wordBreak: 'break-all' }}>
-                linkedin.com/in/bhartik021
-              </a>
+
+          <div className="terminal-body" style={{ padding: '18px 22px' }}>
+
+            {/* command line */}
+            <div style={{ fontFamily: "'Fira Code', monospace", fontSize: '0.82rem', marginBottom: '18px' }}>
+              <span style={{ color: 'var(--accent-primary)' }}>$ </span>
+              <span style={{ color: 'var(--text-secondary)' }}>cat .links</span>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-              <div style={{ width: '32px', height: '32px', borderRadius: '6px', background: 'rgba(168,85,247,0.12)', border: '1px solid rgba(168,85,247,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <i className="fas fa-envelope" style={{ color: 'var(--accent-primary)', fontSize: '0.85rem' }} />
-              </div>
-              <a href="mailto:bhartik021@gmail.com" style={{ color: 'var(--accent-primary)', fontFamily: "'Fira Code', monospace", fontSize: '0.82rem', wordBreak: 'break-all' }}>
-                bhartik021@gmail.com
-              </a>
+
+            {/* column headers */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '90px 1fr 70px',
+              fontFamily: "'Fira Code', monospace",
+              fontSize: '0.68rem',
+              color: 'var(--text-muted)',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+              paddingBottom: '8px',
+              borderBottom: '1px solid var(--border-color)',
+              marginBottom: '6px',
+            }}>
+              <span>type</span>
+              <span>url</span>
+              <span style={{ textAlign: 'right' }}>status</span>
             </div>
+
+            {/* link rows */}
+            {links.map((link) => (
+              <a
+                key={link.type}
+                href={link.href}
+                target={link.href.startsWith('mailto') ? undefined : '_blank'}
+                rel={link.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '90px 1fr 70px',
+                  alignItems: 'center',
+                  padding: '10px 8px',
+                  borderRadius: '6px',
+                  textDecoration: 'none',
+                  transition: 'background 0.18s',
+                  marginLeft: '-8px',
+                  marginRight: '-8px',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.background = link.bg; }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
+              >
+                {/* type */}
+                <span style={{
+                  fontFamily: "'Fira Code', monospace",
+                  fontSize: '0.8rem',
+                  color: link.color,
+                  fontWeight: 600,
+                }}>
+                  {link.type}
+                </span>
+
+                {/* url */}
+                <span style={{
+                  fontFamily: "'Fira Code', monospace",
+                  fontSize: '0.8rem',
+                  color: 'var(--text-secondary)',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}>
+                  <span style={{ color: 'var(--text-muted)', marginRight: '6px' }}>→</span>
+                  {link.url}
+                </span>
+
+                {/* status */}
+                <span style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'flex-end',
+                  gap: '5px',
+                  fontFamily: "'Fira Code', monospace",
+                  fontSize: '0.72rem',
+                  color: '#50fa7b',
+                }}>
+                  <span style={{
+                    width: '6px', height: '6px', borderRadius: '50%',
+                    background: '#50fa7b',
+                    boxShadow: '0 0 5px #50fa7b',
+                    flexShrink: 0,
+                  }} />
+                  open
+                </span>
+              </a>
+            ))}
+
+            {/* cursor */}
+            <div style={{
+              marginTop: '14px',
+              paddingTop: '12px',
+              borderTop: '1px solid var(--border-color)',
+              fontFamily: "'Fira Code', monospace",
+              fontSize: '0.82rem',
+              display: 'flex',
+              alignItems: 'center',
+            }}>
+              <span style={{ color: 'var(--accent-primary)' }}>$ </span>
+              <span className="typing-cursor" />
+            </div>
+
           </div>
         </div>
       </div>

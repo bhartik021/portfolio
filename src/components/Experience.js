@@ -46,7 +46,7 @@ const Experience = () => (
       {/* git log entries */}
       <div style={{ maxWidth: '760px' }}>
         {experiences.map((exp, i) => (
-          <div key={i} className="git-log-line">
+          <div key={i} className="git-log-line anim" style={{ transitionDelay: `${i * 0.18}s` }}>
             {/* Graph track */}
             <div className="git-track">
               <div className="git-node" />

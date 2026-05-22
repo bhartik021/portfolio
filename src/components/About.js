@@ -43,7 +43,7 @@ const About = () => (
         <div className="col-lg-6 col-12" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <div style={{ width: '100%', maxWidth: '320px', display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '0 auto' }}>
             <div
-              className="about-image-container"
+              className="about-image-container about-float"
               style={{
                 position: 'relative',
                 width: 'clamp(220px, 40vw, 300px)',

@@ -112,7 +112,7 @@ const Hero = () => {
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
-        paddingTop: '80px',
+        paddingTop: '90px',
         paddingBottom: '48px',
         background: 'var(--bg-primary)',
       }}
@@ -164,16 +164,24 @@ const Hero = () => {
           </div>
 
           {/* Output */}
-          <div style={{
+          <div className="hero-terminal-output" style={{
             padding: '20px 28px 24px',
             fontFamily: "'Fira Code', monospace",
             lineHeight: 1.9,
-            minHeight: 'clamp(340px, 48vw, 500px)',
+            minHeight: 'clamp(240px, 48vw, 500px)',
             overflowX: 'auto',
           }}>
+            {/* Mobile name fallback — shown only when ASCII art is hidden */}
+            <div className="hero-name-mobile">
+              <span style={{ color: '#a855f7', fontWeight: 700, fontSize: '1.4rem', letterSpacing: '-0.02em' }}>Bharti</span>
+              {' '}
+              <span style={{ color: '#ec4899', fontWeight: 700, fontSize: '1.4rem', letterSpacing: '-0.02em' }}>Kumari</span>
+            </div>
+
             {lines.map((line, i) => (
               <div
                 key={i}
+                className={isBanner(line.type) ? 'ascii-banner-line' : ''}
                 style={{
                   color: LINE_COLOR[line.type],
                   fontSize: isBanner(line.type)
