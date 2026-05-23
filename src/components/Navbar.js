@@ -136,7 +136,7 @@ const Navbar = () => {
 
             {/* Resume download */}
             <a
-              href="https://drive.google.com/file/d/1qfwQ3nq5WNeohTcg7HgMq4aTQI-OYDRh/view?usp=sharing"
+              href="https://drive.google.com/file/d/16NhkLI5HO9CGsytZy38Tz0VNdkawu1mK/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"

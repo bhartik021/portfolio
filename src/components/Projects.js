@@ -6,14 +6,14 @@ const projects = [
     description: 'A summarizer app that provides clear and concise summaries of lengthy articles in 100 words.',
     tech: ['React.js', 'Redux Toolkit', 'Local Storage'],
     codeLink: 'https://github.com/bhartik021/summarizeme',
-    liveLink: 'https://summarizeme-coral.vercel.app/',
+    liveLink: 'https://summarizeme-lake.vercel.app/',
   },
   {
     title: 'Movie Hub',
     description: 'Web Application using ReactJS and OMDb API that fetches and displays movie information.',
     tech: ['React.js', 'OMDb API', 'Bootstrap'],
     codeLink: 'https://github.com/bhartik021/movie-hub',
-    liveLink: 'https://movie-hub-sepia.vercel.app/',
+    liveLink: 'https://movie-hub-tan-sigma.vercel.app/',
   },
 ];
 
